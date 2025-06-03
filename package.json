@@ -17,12 +17,21 @@
       {
         "command": "auto-rspec-by-docker.runRSpecAtCursor",
         "title": "Run RSpec at Cursor"
+      },
+      {
+        "command": "auto-rspec-by-docker.runRSpecForMethod",
+        "title": "Run RSpec for Method"
       }
     ],
     "keybindings": [
       {
         "command": "auto-rspec-by-docker.runRSpecAtCursor",
         "key": "cmd+u",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "auto-rspec-by-docker.runRSpecForMethod",
+        "key": "cmd+y",
         "when": "editorTextFocus"
       }
     ],
