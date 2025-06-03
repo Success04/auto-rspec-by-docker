@@ -1,0 +1,64 @@
+{
+  "name": "auto-rspec-by-docker",
+  "displayName": "RSpec Runner for Docker",
+  "description": "Run RSpec tests with docker-compose at cursor position",
+  "version": "0.0.1",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "auto-rspec-by-docker.runRSpecAtCursor",
+        "title": "Run RSpec at Cursor"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "auto-rspec-by-docker.runRSpecAtCursor",
+        "key": "cmd+u",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "RSpec Runner for Docker",
+      "properties": {
+        "rspecRunner.dockerCommand": {
+          "type": "string",
+          "default": "docker-compose exec -e RAILS_ENV=test rails-api bundle exec rspec",
+          "description": "Docker command to run RSpec tests"
+        },
+        "rspecRunner.workspaceRootPath": {
+          "type": "string",
+          "default": "",
+          "description": "Workspace root path for docker-compose command (if empty, uses current workspace)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.96.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  }
+}
